@@ -18,8 +18,8 @@ public class CarModel {
     private String fuel;
     private String image;
 
-    public CarModel(String licencePlate, String make, String model, int year, int engineCapacity, String color, double price, int doors, String size, int power, boolean automatic, String fuel, String image) {
-        this.carId = UUID.randomUUID();
+    public CarModel(UUID uuid, String licencePlate, String make, String model, int year, int engineCapacity, String color, double price, int doors, String size, int power, boolean automatic, String fuel, String image) {
+        this.carId = uuid;
         this.licencePlate = licencePlate;
         this.make = make;
         this.model = model;
