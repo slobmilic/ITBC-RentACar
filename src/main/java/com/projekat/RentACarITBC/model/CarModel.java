@@ -35,6 +35,23 @@ public class CarModel {
         this.image = image;
     }
 
+    public CarModel(CarModel car) {
+        this.carId = car.carId;
+        this.licencePlate = car.licencePlate;
+        this.make = car.make;
+        this.model = car.model;
+        this.year = car.year;
+        this.engineCapacity = car.engineCapacity;
+        this.color = car.color;
+        this.price = car.price;
+        this.doors = car.doors;
+        this.size = car.size;
+        this.power = car.power;
+        this.automatic = car.automatic;
+        this.fuel = car.fuel;
+        this.image = car.image;
+    }
+
     public UUID getCarId() {
         return carId;
     }
@@ -145,5 +162,25 @@ public class CarModel {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "CarModel{" +
+                "carId=" + carId +
+                ", licencePlate='" + licencePlate + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", engineCapacity=" + engineCapacity +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", doors=" + doors +
+                ", size='" + size + '\'' +
+                ", power=" + power +
+                ", automatic=" + automatic +
+                ", fuel='" + fuel + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

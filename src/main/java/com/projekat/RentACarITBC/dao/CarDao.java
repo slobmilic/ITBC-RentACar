@@ -9,8 +9,10 @@ import java.util.UUID;
 public interface CarDao {
     List<CarModel> getAllCars();
     List<CarModel> search(int year, String make, String model, boolean automatic, double price, int power, int doors);
-    CarModel getCar(UUID carID);
-    void delete(UUID carId);
+    CarModel getCar(String carID);
+    void changeCar(CarModel car);
+    boolean isAdmin(String userId);
+    void delete(String carId);
     void add(CarModel car);
     List<CarModel> availableCar(Date start, Date end);
 

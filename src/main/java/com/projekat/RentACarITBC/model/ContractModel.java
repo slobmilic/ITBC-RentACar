@@ -1,17 +1,19 @@
 package com.projekat.RentACarITBC.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class ContractModel {
     private UUID contractId;
-    private Date startDate;
-    private Date endDate;
+    private String userId;
+    private String carId;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private double totalPrice;
     private boolean signed;
     private boolean approved;
 
-    public ContractModel(Date startDate, Date endDate, double totalPrice, boolean signed, boolean approved) {
+    public ContractModel(LocalDate startDate, LocalDate endDate, double totalPrice, boolean signed, boolean approved) {
         this.contractId = UUID.randomUUID();
         this.startDate = startDate;
         this.endDate = endDate;
@@ -28,19 +30,19 @@ public class ContractModel {
         this.contractId = contractId;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
