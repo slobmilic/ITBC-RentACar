@@ -1,6 +1,5 @@
 package com.projekat.RentACarITBC.controller;
 
-import com.projekat.RentACarITBC.dao.UserDao;
 import com.projekat.RentACarITBC.dao.UserDaoSQL;
 import com.projekat.RentACarITBC.model.request.LoginRequestModel;
 import com.projekat.RentACarITBC.model.request.RegisterRequestModel;
@@ -42,4 +41,5 @@ public class UserController {
         else
             return new LoginResponseModel(false, "Wrong username/email or password");
     }
+
 }
