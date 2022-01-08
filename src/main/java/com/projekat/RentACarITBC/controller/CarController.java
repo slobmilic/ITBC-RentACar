@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 public class CarController {
     private static final CarDao cardao = new CarDaoSQL();
