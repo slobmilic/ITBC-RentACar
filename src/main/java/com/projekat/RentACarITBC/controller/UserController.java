@@ -5,12 +5,14 @@ import com.projekat.RentACarITBC.model.request.LoginRequestModel;
 import com.projekat.RentACarITBC.model.request.RegisterRequestModel;
 import com.projekat.RentACarITBC.model.response.LoginResponseModel;
 import com.projekat.RentACarITBC.model.response.RegisterResponseModel;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.regex.Pattern;
 
+@CrossOrigin(origins = "https://rent-a-car-itbc.herokuapp.com")
 @RestController
 public class UserController {
     public static final UserDaoSQL userSql = new UserDaoSQL();
