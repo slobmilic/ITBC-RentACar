@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.regex.Pattern;
 
-@CrossOrigin(origins = "https://rent-a-car-itbc.herokuapp.com")
+@CrossOrigin(origins = "*")
 @RestController
 public class UserController {
     public static final UserDaoSQL userSql = new UserDaoSQL();
