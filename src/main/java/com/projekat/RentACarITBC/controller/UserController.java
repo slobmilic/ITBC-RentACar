@@ -20,7 +20,7 @@ public class UserController {
         if (!userSql.isUniqueUser(user.getUsername())){
             return new RegisterResponseModel(false, "Username already in use");
         } else if (!userSql.isUniqueEmail(user.getEmail())){
-            return new RegisterResponseModel(false, "Email already in use");
+            return new RegisterResponseModel(false, "Email already in Use");
         } else if (user.getUsername().length() < 3){
             return new RegisterResponseModel(false, "Entry is not valid");
         } else if (!Pattern.matches("^(.+)@(.+)$", user.getEmail())){
