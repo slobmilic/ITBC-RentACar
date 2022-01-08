@@ -7,7 +7,8 @@ public class DatabaseConnection {
     private static Connection conn = null;
 
     static{
-        String url = "jdbc:postgresql://localhost:5432/rentacar?user=postgres&password=root";
+        //String url = "jdbc:postgresql://localhost:5432/rentacar?user=postgres&password=root";
+        String url = "JDBC_DATABASE_URL";
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
