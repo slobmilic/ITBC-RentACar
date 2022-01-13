@@ -36,7 +36,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("users/login")
+    @PostMapping("/users/login")
     public LoginResponseModel login (@RequestBody LoginRequestModel user){
         if (userSql.login(user.getIdentification(), user.getPassword()))
             return new LoginResponseModel(true, userSql.userId(user.getIdentification()));
