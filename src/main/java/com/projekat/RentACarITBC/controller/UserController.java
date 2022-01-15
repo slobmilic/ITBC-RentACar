@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping("/users/login")
     public LoginResponseModel login (@RequestBody LoginRequestModel user){
-        if (userSql.login(user.getIdentification(), user.getPassword()))
+        if (!userSql.login(user.getIdentification(), user.getPassword()))
             return new LoginResponseModel(true, userSql.userId(user.getIdentification()));
         else
             return new LoginResponseModel(false, "Wrong username/email or password");
