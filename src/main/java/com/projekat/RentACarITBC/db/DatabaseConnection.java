@@ -9,6 +9,7 @@ public class DatabaseConnection {
     static{
 
         String url = System.getenv("JDBC_DATABASE_URL");
+
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
@@ -22,3 +23,4 @@ public class DatabaseConnection {
 }
 
 //String url = "jdbc:postgresql://localhost:5432/rentacar?user=postgres&password=root";
+//String url = System.getenv("JDBC_DATABASE_URL");

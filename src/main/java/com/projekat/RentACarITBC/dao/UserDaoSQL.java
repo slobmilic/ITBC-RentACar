@@ -3,7 +3,11 @@ package com.projekat.RentACarITBC.dao;
 import com.projekat.RentACarITBC.db.DatabaseConnection;
 import com.projekat.RentACarITBC.model.UserModel;
 import com.projekat.RentACarITBC.model.request.RegisterRequestModel;
+import org.bouncycastle.util.encoders.Hex;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +16,30 @@ import java.util.UUID;
 public class UserDaoSQL implements UserDao{
     private static final Connection conn = DatabaseConnection.getConnection();
 
+
+    // Password encription
+    private String passhex (String pass){
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] hash = digest.digest(
+                pass.getBytes(StandardCharsets.UTF_8));
+        String sha256hex = new String(Hex.encode(hash));
+        return sha256hex;
+    }
+
     @Override
     public void register(RegisterRequestModel user) {
+
         try{
             PreparedStatement st = conn.prepareStatement("INSERT INTO users (user_id, username, email, password, admin) VALUES(?,?,?,?,?)");
             st.setString(1, UUID.randomUUID().toString());
             st.setString(2, user.getUsername());
             st.setString(3, user.getEmail());
-            st.setString(4, user.getPassword());
+            st.setString(4, passhex(user.getPassword()));
             st.setBoolean(5, false);
             st.executeUpdate();
         }catch (SQLException e){
@@ -32,11 +52,11 @@ public class UserDaoSQL implements UserDao{
         try{
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT password FROM users WHERE username = '" + entry + "' OR email = '" + entry + "'");
-            return rs.next() && rs.getString(1).equals(password);
+            return rs.next() && rs.getString(1).equals(passhex(password));
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     public boolean isUniqueUser(String userName){
@@ -69,8 +89,9 @@ public class UserDaoSQL implements UserDao{
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT user_id FROM users WHERE username = '" + entry + "' OR email = '" + entry + "'");
-            rs.next();
-            return rs.getString(1);
+            if (rs.next()){
+             return rs.getString(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
